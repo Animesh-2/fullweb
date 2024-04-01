@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const userController = require("./routes/userRoutes");
 const connection = require("./config/db");
 const notesController = require("./routes/notesRoutes");
@@ -7,6 +8,7 @@ const authentication = require("./middlewares/authentication");
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Home Page");
