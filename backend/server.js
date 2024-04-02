@@ -15,6 +15,12 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userController);
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // Change * to your domain in production for security
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use(authentication);
 app.use("/notes", notesController);
 
